@@ -1,4 +1,4 @@
-# Setup
+# Color Vision - Full System Setup
 
 ## 1. Install Python Dependencies
 
@@ -43,19 +43,22 @@ uvicorn main:app --reload
 
 Then open http://localhost:8000 in your browser.
 
-## 5. Run with Docker (Still testing this)
+## 5. Setup and Run Data Server
 
-### Build the image:
+Install required tools:
+- Node.js
+- npm
+- MongoDB (local instance must be running)
+
+Install dependencies:
 ```bash
-docker build -t color-vision-api .
+npm install
 ```
 
-### Run the container:
+Start the data server:
 ```bash
-docker run -v /path/to/chest_xray:/app/app/model/chest_xray \
-           -v /path/to/DenseNet121model_prototype.pth:/app/app/model/DenseNet121model_prototype.pth \
-           -p 8000:8000 \
-           color-vision-api
+cd data_server
+npm run devstart
 ```
 
 Replace `/path/to/` with the actual paths to your dataset and model files on your computer.
